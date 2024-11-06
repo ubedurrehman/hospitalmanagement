@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <html>
 <head>
     <title>User Login Page</title>
@@ -24,7 +26,33 @@
     <div class="card shadow-lg" style="width: 100%; max-width: 400px;">
         <div class="card-body">
             <h3 class="text-center mb-4"><i class="fa-solid fa-user-lock"></i> User Login</h3>
-            <form action="" method="post">
+
+            <%
+                String successMessage = (String) session.getAttribute("sucMsg");
+                if (successMessage != null) {
+            %>
+            <div class="alert alert-success">
+                <%= successMessage %>
+            </div>
+            <%
+                    session.removeAttribute("sucMsg");
+                }
+            %>
+
+
+            <%
+                String errorMessage = (String) session.getAttribute("errorMsg");
+                if (errorMessage != null) {
+            %>
+            <div class="alert alert-danger">
+                <%= errorMessage %>
+            </div>
+            <%
+                    session.removeAttribute("errorMsg");
+                }
+            %>
+
+            <form action="userLogin" method="post">
                 <div class="mb-3">
                     <label class="form-label">Email address</label>
                     <input type="email" class="form-control"  name="email" placeholder="Enter your username" required>

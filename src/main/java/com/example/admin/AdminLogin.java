@@ -23,9 +23,16 @@ public class AdminLogin extends HttpServlet {
          if("admin@gmail.com".equals(email) && "admin".equals(password)){
                 session.setAttribute("adminObj" , new User());
                 resp.sendRedirect("admin/index.jsp");
+         }else{
+             session.setAttribute("errorMsg", "Invalid Email & password...");
+             resp.sendRedirect("admin_login.jsp");
          }
      }catch (Exception e){
          e.printStackTrace();
      }
     }
 }
+
+
+
+

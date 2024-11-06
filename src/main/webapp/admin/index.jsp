@@ -9,8 +9,89 @@
 <html>
 <head>
     <title>Title</title>
+    <%@include file="../component/css.jsp"%>
+    <style type="text/css">
+
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
-<h1>Admin DashBoard</h1>
+<%@include file="navbar.jsp"%>
+    <div class="container p-4">
+        <p class="text-center fs-3">Admin DashBoard</p>
+        <%
+            String successMessage = (String) session.getAttribute("sucMsg");
+            if (successMessage != null) {
+        %>
+        <div class="alert alert-success ">
+            <%= successMessage %>
+        </div>
+        <%
+                session.removeAttribute("sucMsg");
+            }
+        %>
+
+        <%
+            String errorMessage = (String) session.getAttribute("errorMsg");
+            if (errorMessage != null) {
+        %>
+        <div class="alert alert-error text-danger">
+            <%= errorMessage %>
+        </div>
+        <%
+                session.removeAttribute("error");
+            }
+        %>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card point-card">
+                    <div class="card-body text-center text-success">
+                        <li class="fas fa-user-md fa-3x"></li><br>
+                        <p class="fs-4 text-center">
+                            Doctor <br>5
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card point-card">
+                    <div class="card-body text-center text-success">
+                        <li class="fas fa-user-md fa-3x"></li><br>
+                        <p class="fs-4 text-center">
+                            User <br>43
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card point-card">
+                    <div class="card-body text-center text-success">
+                        <li class="fas fa-user-md fa-3x"></li><br>
+                        <p class="fs-4 text-center">
+                            Total Appointment <br>453
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card point-card">
+                    <div class="card-body text-center text-success">
+                        <li class="fas fa-user-md fa-3x"></li><br>
+                        <p class="fs-4 text-center">
+                            Specialist <br>34
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
 </body>
 </html>
