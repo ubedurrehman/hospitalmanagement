@@ -28,14 +28,14 @@
             <h3 class="text-center mb-4"><i class="fa-solid fa-user-lock"></i> User Login</h3>
 
             <%
-                String successMessage = (String) session.getAttribute("sucMsg");
+                String successMessage = (String) session.getAttribute("succMsg");
                 if (successMessage != null) {
             %>
             <div class="alert alert-success">
                 <%= successMessage %>
             </div>
             <%
-                    session.removeAttribute("sucMsg");
+                    session.removeAttribute("succMsg");
                 }
             %>
 

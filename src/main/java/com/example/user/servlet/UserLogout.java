@@ -14,7 +14,7 @@ public class UserLogout extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session=req.getSession();
         session.removeAttribute("userObj");
-        session.setAttribute("succMsg","Admin Logout Successfully");
-        resp.sendRedirect("user_Login.jsp");
+        session.setAttribute("succMsg","User Logout Successfully");
+        resp.sendRedirect("user_login.jsp");
     }
 }

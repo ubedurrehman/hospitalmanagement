@@ -23,14 +23,14 @@
     <div class="container p-4">
         <p class="text-center fs-3">Admin DashBoard</p>
         <%
-            String successMessage = (String) session.getAttribute("sucMsg");
+            String successMessage = (String) session.getAttribute("succMsg");
             if (successMessage != null) {
         %>
         <div class="alert alert-success ">
             <%= successMessage %>
         </div>
         <%
-                session.removeAttribute("sucMsg");
+                session.removeAttribute("succMsg");
             }
         %>
 
@@ -78,7 +78,8 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card point-card">
+                <div class="card point-card" data-bs-toggle="modal"
+                     data-bs-target="#exampleModal">
                     <div class="card-body text-center text-success">
                         <li class="fas fa-user-md fa-3x"></li><br>
                         <p class="fs-4 text-center">
@@ -89,9 +90,37 @@
             </div>
 
 
-
-
         </div>
     </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="../addSpecialist" method="post">
+                            <div class="from-group">
+                                <label>Enter Specialist Name</label>
+                                <input type="text" name="specName" class="form-control">
+                            </div>
+
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

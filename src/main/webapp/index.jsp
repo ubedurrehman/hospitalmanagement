@@ -37,13 +37,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/hospital.jpg" class="d-block w-100" alt="..." height="800px">
+                <img src="img/hospital.jpg" class="d-block w-100" alt="..." height="700px">
             </div>
             <div class="carousel-item">
-                <img src="img/doctr4.jpeg" class="d-block w-100" alt="..." height="900px">
+                <img src="img/doctr4.jpeg" class="d-block w-100" alt="..." height="800px">
             </div>
             <div class="carousel-item">
-                <img src="img/Hospital-Ma.jpg" class="d-block w-100" alt="..." height="850px">
+                <img src="img/Hospital-Ma.jpg" class="d-block w-100" alt="..." height="800px">
             </div>
             <div class="carousel-item">
                 <img src="img/hospital-CRM.jpg" class="d-block w-100" alt="..." height="900px">

@@ -12,38 +12,41 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                <!-- Links visible to all users (no userObj) -->
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="admin_login.jsp">
-                        <i class="fa-solid fa-right-to-bracket"></i> ADMIN
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="doctor_login.jsp">DOCTOR</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="user_login.jsp">USER</a>
-                </li>
+
+                <c:if test="${empty userObj }">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="admin_login.jsp">
+                            <i class="fa-solid fa-right-to-bracket"></i> ADMIN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">DOCTOR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">APPOTTMENT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="user_login.jsp">USER</a>
+                    </li>
+
+                </c:if>
 
                 <!-- Only display these links if userObj is present (i.e., user is logged in) -->
                 <c:if test="${not empty userObj}">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="appointment.jsp">APPOINTMENT</a>
+                        <a class="nav-link active" aria-current="page" href="">APPOINTMENT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="view_appointment.jsp">VIEW APPOINTMENT</a>
+                        <a class="nav-link active" aria-current="page" href="">VIEW APPOINTMENT</a>
                     </li>
                     <div class="dropdown">
                         <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-circle-user"></i>  ${userObj.fullName}
-
+                            <i class="fa-solid fa-user"></i> ${userObj.fullName}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#">Change Password</a></li>
                             <li><a class="dropdown-item" href="userLogout">Logout</a></li>
                         </ul>
                     </div>
-
 
 
                 </c:if>
