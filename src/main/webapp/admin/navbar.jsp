@@ -32,3 +32,66 @@
         </div>
     </div>
 </nav>
+<style>
+    /* Navbar Styling */
+    .navbar {
+        background-color: #6495ED !important; /* Custom green color */
+        border-bottom: 3px solid #007b33; /* Darker green border */
+        transition: background-color 0.3s ease; /* Smooth background transition */
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    /* Navbar items - Links */
+    .navbar-nav .nav-item .nav-link {
+        color: #ffffff !important;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        text-transform: uppercase;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    /* Hover effect for navbar links */
+    .navbar-nav .nav-item .nav-link:hover {
+        color: #f1f1f1 !important;
+        text-decoration: underline;
+    }
+
+    /* Active link style */
+    .navbar-nav .nav-item .nav-link.active {
+        color: #ffc107 !important;
+        font-weight: bold;
+    }
+
+    /* Dropdown button styling */
+    .dropdown-toggle {
+        color: #28a745 !important;
+        font-weight: 600;
+    }
+
+    .dropdown-menu {
+        background-color: #ffffff;
+        border: 1px solid #28a745;
+    }
+
+    .dropdown-item {
+        color: #28a745;
+        padding: 8px 16px;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f1f1f1;
+        color: #28a745;
+    }
+
+    /* Mobile/Responsive Navbar */
+    @media (max-width: 991px) {
+        .navbar-nav {
+            margin-top: 1rem;
+        }
+    }
+</style>
