@@ -126,13 +126,13 @@
 <div class="container-fluid">
     <div class="row">
 
-        <!-- Add Doctor Form -->
-        <div class="col-md-5 offset-md-4">
+
+
+        <!-- Doctor Details Table -->
+        <div class="col-md-12">
             <div class="card point-card">
                 <div class="card-body">
-                    <p class="fs-3 text-center">Add Doctor</p>
-
-                    <!-- Success or Error Messages -->
+                    <p class="fs-3 text-center">Doctor Details</p>
                     <c:if test="${not empty errorMsg}">
                         <div class="error-msg">${errorMsg}</div>
                         <c:remove var="errorMsg" scope="session"/>
@@ -141,55 +141,44 @@
                         <div class="success-msg">${succMsg}</div>
                         <c:remove var="succMsg" scope="session"/>
                     </c:if>
-
-                    <!-- Form to Add Doctor -->
-                    <form action="../addDoctor" method="post">
-                        <div class="mb-3">
-                            <label class="form-label">Full Name</label>
-                            <input type="text" name="fullname" id="fullname" required class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">DOB</label>
-                            <input type="date" name="dob" id="dob" required class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Qualification</label>
-                            <input type="text" name="qualification" id="qualification" required class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Specialist</label>
-                            <select name="spec" id="spec" class="form-control" required>
-                                <option value="">-- Select --</option>  <!-- Set value as empty for "Select" option -->
-                                <%
-                                    SpecialistDao dao = new SpecialistDao(DBConnect.getConn());
-                                    List<Specialist> list = dao.getAllSpecialist();
-                                    for (Specialist s : list) {
-                                %>
-                                <option value="<%= s.getSpecialistName() %>"><%= s.getSpecialistName() %></option>
-                                <% } %>
-                            </select>
-
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" id="email" required class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Mobile No</label>
-                            <input type="text" name="mobno" id="mobno" required class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" name="password" id="password" required class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Add Doctor</button>
-                    </form>
-
+                    <div class="table-container">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>DOB</th>
+                                <th>Qualification</th>
+                                <th>Specialization</th>
+                                <th>Email</th>
+                                <th>Mobile NO</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%
+                                DoctorDao dao1 = new DoctorDao(DBConnect.getConn());
+                                List<Doctor> doctorList = dao1.getAllDoctor();
+                                for (Doctor d : doctorList) {
+                            %>
+                            <tr>
+                                <td><%= d.getFullName() %></td>
+                                <td><%= d.getDob() %></td>
+                                <td><%= d.getQualification() %></td>
+                                <td><%= d.getSpecialist() %></td>
+                                <td><%= d.getEmail() %></td>
+                                <td><%= d.getMobNo() %></td>
+                                <td>
+                                    <a href="edit_doctor.jsp?id=<%=d.getId()%>" class="btn btn-sm edit-btn">Edit</a>
+                                    <a href="../deleteDoctor?id=<%=d.getId()%>" class="btn btn-sm delete-btn">Delete</a>
+                                </td>
+                            </tr>
+                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-
-
 
     </div>
 </div>

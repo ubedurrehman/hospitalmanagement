@@ -149,7 +149,7 @@
                     %>
 
                     <!-- Form to Add Doctor -->
-                    <form action="../addDoctor" method="post">
+                    <form action="../updatedoctor" method="post">
                         <div class="mb-3">
                             <label class="form-label">Full Name</label>
                             <input type="text" name="fullname" id="fullname" required class="form-control" value="<%=d.getFullName()%>">
@@ -163,9 +163,9 @@
                             <input type="text" name="qualification" id="qualification" required class="form-control" value="<%=d.getQualification()%>">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">value="<%=d.getSpecialist()%>"</label>
+                            <label class="form-label" value="<%=d.getSpecialist()%>"></label>
                             <select name="spec" id="spec" class="form-control" required>
-                                <option value="">-- Select --</option>  <!-- Set value as empty for "Select" option -->
+                                <option value="">-- Select --</option>
                                 <%
                                     SpecialistDao dao = new SpecialistDao(DBConnect.getConn());
                                     List<Specialist> list = dao.getAllSpecialist();
@@ -188,6 +188,7 @@
                             <label class="form-label">Password</label>
                             <input type="text" name="password" id="password" required class="form-control"value="<%=d.getPassword()%>">
                         </div>
+                        <input type="hidden" name="id" value="<%=d.getId()%>">
                         <button type="submit" class="btn btn-primary col-md-12">Update</button>
                     </form>
 
