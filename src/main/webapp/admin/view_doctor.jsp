@@ -191,6 +191,9 @@
                             <% } %>
                             </tbody>
                         </table>
+                        <div class="fs-3 text-center" style="margin-top: 20px;">
+                            Total Doctors: <%= doctorList.size() %>
+                        </div>
                     </div>
                 </div>
             </div>
