@@ -26,7 +26,7 @@
             String successMessage = (String) session.getAttribute("succMsg");
             if (successMessage != null) {
         %>
-        <div class="alert alert-success ">
+        <div class="alert alert-success  ">
             <%= successMessage %>
         </div>
         <%

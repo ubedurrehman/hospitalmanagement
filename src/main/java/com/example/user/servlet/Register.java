@@ -31,8 +31,6 @@ public class Register extends HttpServlet {
            boolean f=dao.userRegister(u);
 
 
-
-
            if(f){
                session.setAttribute("sucMsg", "Register Account Successfully...");
                resp.sendRedirect("signup.jsp");

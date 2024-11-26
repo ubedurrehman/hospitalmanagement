@@ -133,14 +133,30 @@
             <div class="card point-card">
                 <div class="card-body">
                     <p class="fs-3 text-center">Doctor Details</p>
-                    <c:if test="${not empty errorMsg}">
-                        <div class="error-msg">${errorMsg}</div>
-                        <c:remove var="errorMsg" scope="session"/>
-                    </c:if>
-                    <c:if test="${not empty succMsg}">
-                        <div class="success-msg">${succMsg}</div>
-                        <c:remove var="succMsg" scope="session"/>
-                    </c:if>
+                    <%
+                        String successMessage = (String) session.getAttribute("succMsg");
+                        if (successMessage != null) {
+                    %>
+                    <div class="alert alert-success text-center fs-3">
+                        <%= successMessage %>
+                    </div>
+                    <%
+                            session.removeAttribute("succMsg");
+                        }
+                    %>
+
+
+                    <%
+                        String errorMessage = (String) session.getAttribute("errorMsg");
+                        if (errorMessage != null) {
+                    %>
+                    <div class="alert alert-danger">
+                        <%= errorMessage %>
+                    </div>
+                    <%
+                            session.removeAttribute("errorMsg");
+                        }
+                        %>
                     <div class="table-container">
                         <table class="table table-bordered">
                             <thead>

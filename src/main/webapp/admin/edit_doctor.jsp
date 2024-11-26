@@ -133,14 +133,30 @@
                     <p class="fs-3 text-center">Edit Doctor</p>
 
                     <!-- Success or Error Messages -->
-                    <c:if test="${not empty errorMsg}">
-                        <div class="error-msg">${errorMsg}</div>
-                        <c:remove var="errorMsg" scope="session"/>
-                    </c:if>
-                    <c:if test="${not empty succMsg}">
-                        <div class="success-msg">${succMsg}</div>
-                        <c:remove var="succMsg" scope="session"/>
-                    </c:if>
+                    <%
+                        String successMessage = (String) session.getAttribute("succMsg");
+                        if (successMessage != null) {
+                    %>
+                    <div class="alert alert-success text-center fs-3">
+                        <%= successMessage %>
+                    </div>
+                    <%
+                            session.removeAttribute("succMsg");
+                        }
+                    %>
+
+
+                    <%
+                        String errorMessage = (String) session.getAttribute("errorMsg");
+                        if (errorMessage != null) {
+                    %>
+                    <div class="alert alert-danger">
+                        <%= errorMessage %>
+                    </div>
+                    <%
+                            session.removeAttribute("errorMsg");
+                        }
+                    %>
 
                     <%
                         int id=Integer.parseInt(request.getParameter("id"));
@@ -180,6 +196,7 @@
                         <div class="mb-3">
                             <label class="form-label">Email</label>
                             <input type="email" name="email" id="email" required class="form-control" value="<%=d.getEmail()%>">
+                            <div id="email-error" style="color: red; display: none;">Please enter a valid email address.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Mobile No</label>
@@ -201,5 +218,23 @@
     </div>
 </div>
 
+<script>
+    // Form submission ke liye custom validation
+    document.querySelector("form").addEventListener("submit", function(event) {
+        var emailInput = document.getElementById("email");
+        var emailError = document.getElementById("email-error");
+
+        // Regular expression for basic email validation
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        // Agar email valid nahi hai
+        if (!emailRegex.test(emailInput.value)) {
+            emailError.style.display = "block";
+            event.preventDefault(); // Form ko submit hone se rokna
+        } else {
+            emailError.style.display = "none";
+        }
+    });
+</script>
 </body>
 </html>

@@ -19,7 +19,7 @@
                             <i class="fa-solid fa-right-to-bracket"></i> ADMIN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="">DOCTOR</a>
+                        <a class="nav-link active" aria-current="page" href="doctor_login.jsp">DOCTOR</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="">APPOTTMENT</a>
